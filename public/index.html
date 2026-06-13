@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TrustPay</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+
+    <!-- Status Bar -->
+    <div class="status-bar">
+      <span class="status-time">9:41</span>
+      <div class="status-icons">
+        <svg width="16" height="12" viewBox="0 0 16 12"><rect x="0" y="3" width="3" height="9" rx="1" fill="currentColor" opacity=".4"/><rect x="4" y="2" width="3" height="10" rx="1" fill="currentColor" opacity=".6"/><rect x="8" y="1" width="3" height="11" rx="1" fill="currentColor" opacity=".8"/><rect x="12" y="0" width="3" height="12" rx="1" fill="currentColor"/></svg>
+        <svg width="16" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/></svg>
+        <svg width="20" height="12" viewBox="0 0 20 12"><rect x="0" y="1" width="16" height="10" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/><rect x="1.5" y="2.5" width="10" height="7" rx="1" fill="currentColor"/><path d="M17 4v4a2 2 0 0 0 0-4z" fill="currentColor"/></svg>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header class="app-header">
+      <div class="header-left">
+        <div class="app-logo">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5z" fill="#fff"/><path d="M2 17l10 5 10-5" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M2 12l10 5 10-5" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity="0.6"/></svg>
+        </div>
+        <span class="app-name">TrustPay</span>
+      </div>
+      <div class="header-right">
+        <button class="hdr-btn" aria-label="Search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <button class="hdr-btn" aria-label="Notifications">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <span class="notif-dot"></span>
+        </button>
+        <div class="avatar-btn">RS</div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+
+      <!-- HOME TAB -->
+      <div id="tab-home" class="tab active">
+
+        <!-- Balance Card -->
+        <div class="balance-card">
+          <div class="balance-top">
+            <div>
+              <p class="balance-greeting">Good morning, Rahul</p>
+              <div class="balance-row">
+                <span class="balance-currency">₹</span>
+                <span class="balance-amount" id="balanceAmount">2,450</span>
+                <button class="eye-btn" onclick="toggleBalance()" aria-label="Toggle balance">
+                  <svg id="eyeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                </button>
+              </div>
+              <p class="balance-label">Total Balance</p>
+            </div>
+            <div class="balance-mini-stats">
+              <div class="mini-stat">
+                <span class="mini-stat-label">In</span>
+                <span class="mini-stat-val green">+5,200</span>
+              </div>
+              <div class="mini-stat">
+                <span class="mini-stat-label">Out</span>
+                <span class="mini-stat-val red">-3,080</span>
+              </div>
+            </div>
+          </div>
+          <div class="upi-id">UPI: rahul.sharma@trustpay</div>
+        </div>
+
+        <!-- Quick Actions Grid -->
+        <div class="section-pad">
+          <div class="quick-grid">
+            <button class="quick-btn" onclick="switchTab('tab-pay')">
+              <div class="quick-icon-box blue">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              </div>
+              <span>Send</span>
+            </button>
+            <button class="quick-btn">
+              <div class="quick-icon-box purple">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+              </div>
+              <span>Scan</span>
+            </button>
+            <button class="quick-btn">
+              <div class="quick-icon-box teal">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 7 13.5 15.5 8.5 10.5 1 17"/><polyline points="17 7 23 7 23 13"/></svg>
+              </div>
+              <span>Request</span>
+            </button>
+            <button class="quick-btn" onclick="switchTab('tab-sms')">
+              <div class="quick-icon-box orange">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              </div>
+              <span>SMS Check</span>
+            </button>
+            <button class="quick-btn" onclick="switchTab('tab-loans')">
+              <div class="quick-icon-box green">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              </div>
+              <span>Loan</span>
+            </button>
+            <button class="quick-btn">
+              <div class="quick-icon-box rose">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+              </div>
+              <span>Bill Pay</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Trust Score Card -->
+        <div class="section-pad">
+          <div class="trust-card">
+            <div class="trust-card-top">
+              <div>
+                <p class="trust-label">AI FRAUD SHIELD</p>
+                <p class="trust-sublabel">Your safety score</p>
+              </div>
+              <span class="trust-chip good" id="trustChip">Good</span>
+            </div>
+            <div class="trust-body">
+              <div class="score-ring-wrap">
+                <svg class="score-ring" viewBox="0 0 100 100" width="90" height="90">
+                  <circle cx="50" cy="50" r="40" fill="none" stroke="#1e293b" stroke-width="10"/>
+                  <circle id="scoreArc" cx="50" cy="50" r="40" fill="none" stroke="#06b6d4" stroke-width="10"
+                    stroke-linecap="round" stroke-dasharray="251.2" stroke-dashoffset="63"
+                    transform="rotate(-90 50 50)"/>
+                </svg>
+                <div class="score-center">
+                  <span class="score-val" id="scoreValue">75</span>
+                </div>
+              </div>
+              <div class="trust-details">
+                <div class="trust-detail-item">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>12 safe transactions</span>
+                </div>
+                <div class="trust-detail-item">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>0 fraud flags</span>
+                </div>
+                <div class="trust-detail-item">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>KYC verified</span>
+                </div>
+                <div class="trust-detail-item">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Eligible for micro-loans</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Contacts -->
+        <div class="section-pad">
+          <div class="section-header">
+            <h3 class="section-title">Recent</h3>
+            <button class="link-btn">View all</button>
+          </div>
+          <div class="contacts-scroll">
+            <div class="contact-item">
+              <div class="contact-av" style="background:#8b5cf6">PS</div>
+              <span class="contact-name">Priya</span>
+            </div>
+            <div class="contact-item">
+              <div class="contact-av" style="background:#0ea5e9">RK</div>
+              <span class="contact-name">Ramesh</span>
+            </div>
+            <div class="contact-item">
+              <div class="contact-av" style="background:#10b981">SP</div>
+              <span class="contact-name">Suresh</span>
+            </div>
+            <div class="contact-item">
+              <div class="contact-av" style="background:#f59e0b">AD</div>
+              <span class="contact-name">Anjali</span>
+            </div>
+            <div class="contact-item">
+              <div class="contact-av" style="background:#ef4444">MD</div>
+              <span class="contact-name">Mohan</span>
+            </div>
+            <div class="contact-item">
+              <div class="contact-av add-av">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </div>
+              <span class="contact-name">Add</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Transactions -->
+        <div class="section-pad">
+          <div class="section-header">
+            <h3 class="section-title">Transactions</h3>
+            <button class="link-btn" onclick="switchTab('tab-history')">View all</button>
+          </div>
+          <div class="txn-list" id="activityList"></div>
+        </div>
+
+      </div>
+
+      <!-- PAY TAB -->
+      <div id="tab-pay" class="tab">
+        <div class="page-header">
+          <button class="back-btn" onclick="switchTab('tab-home')">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <h2 class="page-title">Send Money</h2>
+        </div>
+        <div class="form-section">
+          <div class="inp-group">
+            <label class="inp-label">Recipient Name</label>
+            <input type="text" id="recipient" class="inp" placeholder="Name">
+          </div>
+          <div class="inp-group">
+            <label class="inp-label">Phone / UPI ID</label>
+            <input type="text" id="recipientId" class="inp" placeholder="9XXXXXXXXX or name@upi">
+          </div>
+          <div class="inp-group">
+            <label class="inp-label">Amount</label>
+            <div class="amount-inp-wrap">
+              <span class="amount-prefix">₹</span>
+              <input type="number" id="amount" class="inp amount-inp" placeholder="0" min="1">
+            </div>
+          </div>
+          <div class="inp-group">
+            <label class="inp-label">Purpose</label>
+            <select id="purpose" class="inp">
+              <option>Personal</option>
+              <option>Bill Payment</option>
+              <option>Shopping</option>
+              <option>Food</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="inp-group">
+            <label class="inp-label">Note (optional)</label>
+            <textarea id="note" class="inp inp-textarea" rows="2" placeholder="Add a note"></textarea>
+          </div>
+
+          <div id="riskAlert" class="risk-banner hidden"></div>
+
+          <div id="layerBreakdown" class="layer-breakdown hidden">
+            <div class="layer-row">
+              <span class="layer-label">Rule check</span>
+              <div class="layer-bar-wrap"><div class="layer-bar" id="barRule"></div></div>
+              <span class="layer-pct" id="pctRule">0%</span>
+            </div>
+            <div class="layer-row">
+              <span class="layer-label">Behaviour</span>
+              <div class="layer-bar-wrap"><div class="layer-bar" id="barBeh"></div></div>
+              <span class="layer-pct" id="pctBeh">0%</span>
+            </div>
+            <div class="layer-row">
+              <span class="layer-label">AI analysis</span>
+              <div class="layer-bar-wrap"><div class="layer-bar" id="barLLM"></div></div>
+              <span class="layer-pct" id="pctLLM">0%</span>
+            </div>
+          </div>
+
+          <button class="btn-outline full-width" id="analyzeBtn" onclick="analyzePayment()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            Analyze Risk
+          </button>
+          <button class="btn-primary full-width" id="sendBtn" disabled onclick="sendPayment()">
+            Pay Now
+          </button>
+        </div>
+      </div>
+
+      <!-- SMS CHECK TAB -->
+      <div id="tab-sms" class="tab">
+        <div class="page-header">
+          <button class="back-btn" onclick="switchTab('tab-home')">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <h2 class="page-title">SMS Fraud Check</h2>
+        </div>
+        <div class="form-section">
+          <p class="helper-text">Paste an SMS you received to check if it is a scam. Our AI uses 2 layers of analysis to detect social engineering, phishing links, and pressure tactics.</p>
+
+          <div class="sample-pills">
+            <button class="sample-pill" onclick="loadSampleSMS('otp')">OTP Scam</button>
+            <button class="sample-pill" onclick="loadSampleSMS('lottery')">Lottery</button>
+            <button class="sample-pill" onclick="loadSampleSMS('kyc')">KYC Fraud</button>
+            <button class="sample-pill" onclick="loadSampleSMS('bank')">Bank Alert</button>
+          </div>
+
+          <div class="inp-group">
+            <label class="inp-label">SMS Text</label>
+            <textarea id="smsText" class="inp inp-textarea sms-area" rows="5" placeholder="Paste SMS here..."></textarea>
+          </div>
+
+          <button class="btn-primary full-width" onclick="analyzeSMS()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Check SMS
+          </button>
+
+          <div id="smsResult" class="sms-result hidden"></div>
+        </div>
+      </div>
+
+      <!-- HISTORY TAB -->
+      <div id="tab-history" class="tab">
+        <div class="page-header-inline">
+          <h2 class="page-title">History</h2>
+          <div class="filter-row">
+            <button class="filter-btn active" onclick="filterTxn('all', this)">All</button>
+            <button class="filter-btn" onclick="filterTxn('sent', this)">Sent</button>
+            <button class="filter-btn" onclick="filterTxn('received', this)">Received</button>
+          </div>
+        </div>
+        <div class="txn-list padded" id="transactionList"></div>
+      </div>
+
+      <!-- LOANS TAB -->
+      <div id="tab-loans" class="tab">
+        <div class="page-header-inline">
+          <h2 class="page-title">Micro Loans</h2>
+        </div>
+        <div class="form-section">
+
+          <div id="activeLoanSection" class="active-loan-card hidden">
+            <div class="active-loan-top">
+              <span class="active-loan-title">Active Loan</span>
+              <span class="loan-chip granted" id="activeLoanStatus">GRANTED</span>
+            </div>
+            <div class="active-loan-row">
+              <div class="active-loan-stat">
+                <span class="stat-lbl">Amount</span>
+                <span class="stat-vl" id="activeLoanAmount">-</span>
+              </div>
+              <div class="active-loan-stat">
+                <span class="stat-lbl">Due Date</span>
+                <span class="stat-vl" id="activeLoanDue">-</span>
+              </div>
+            </div>
+          </div>
+
+          <div id="loanApplySection">
+            <div class="loan-avail-card">
+              <p class="loan-avail-lbl">Available to borrow</p>
+              <p class="loan-avail-amt">₹1,500</p>
+            </div>
+            <div class="loan-options-grid">
+              <div class="loan-opt-card" onclick="openLoanModal(500, '7 days')">
+                <span class="loan-opt-amt">₹500</span>
+                <span class="loan-opt-term">7 days</span>
+                <span class="loan-opt-rate">0% interest</span>
+              </div>
+              <div class="loan-opt-card" onclick="openLoanModal(1000, '14 days')">
+                <span class="loan-opt-amt">₹1,000</span>
+                <span class="loan-opt-term">14 days</span>
+                <span class="loan-opt-rate">0% interest</span>
+              </div>
+              <div class="loan-opt-card" onclick="openLoanModal(1500, '30 days')">
+                <span class="loan-opt-amt">₹1,500</span>
+                <span class="loan-opt-term">30 days</span>
+                <span class="loan-opt-rate">0% interest</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="loan-history-section">
+            <h3 class="sub-title">Loan History</h3>
+            <div id="loanHistoryList" class="loan-history-list"></div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- Bottom Nav -->
+    <nav class="bottom-nav">
+      <button class="nav-btn active" data-tab="tab-home" onclick="switchTab('tab-home')">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span>Home</span>
+      </button>
+      <button class="nav-btn" data-tab="tab-pay" onclick="switchTab('tab-pay')">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        <span>Pay</span>
+      </button>
+      <button class="nav-btn" data-tab="tab-sms" onclick="switchTab('tab-sms')">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span>Check</span>
+      </button>
+      <button class="nav-btn" data-tab="tab-history" onclick="switchTab('tab-history')">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="14 2 14 8 20 8"/><path d="M20 20H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h12l6 6v10a2 2 0 0 1-2 2z"/></svg>
+        <span>History</span>
+      </button>
+      <button class="nav-btn" data-tab="tab-loans" onclick="switchTab('tab-loans')">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        <span>Loans</span>
+      </button>
+    </nav>
+
+    <!-- Transaction Detail Modal -->
+    <div class="modal-overlay hidden" id="txnModal">
+      <div class="modal-sheet">
+        <div class="modal-bar"></div>
+        <div class="modal-hdr">
+          <h3>Transaction Details</h3>
+          <button class="modal-close" onclick="closeTxnModal()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+        <div id="txnModalBody" class="modal-body"></div>
+      </div>
+    </div>
+
+    <!-- Loan Application Modal -->
+    <div class="modal-overlay hidden" id="loanModal">
+      <div class="modal-sheet">
+        <div class="modal-bar"></div>
+        <div class="modal-hdr">
+          <h3>Apply for Loan</h3>
+          <button class="modal-close" onclick="closeLoanModal()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="loanForm">
+            <div class="inp-group">
+              <label class="inp-label">Full Name</label>
+              <input type="text" id="loanFullName" class="inp" required placeholder="Your full name">
+            </div>
+            <div class="inp-group">
+              <label class="inp-label">Phone</label>
+              <input type="tel" id="loanPhone" class="inp" required placeholder="10-digit mobile number">
+            </div>
+            <div class="inp-group">
+              <label class="inp-label">Email</label>
+              <input type="email" id="loanEmail" class="inp" required placeholder="you@email.com">
+            </div>
+            <div class="inp-group">
+              <label class="inp-label">Address</label>
+              <textarea id="loanAddress" class="inp inp-textarea" required placeholder="Full address"></textarea>
+            </div>
+            <div class="inp-group">
+              <label class="inp-label">Monthly Income (₹)</label>
+              <input type="number" id="loanIncome" class="inp" required placeholder="e.g. 25000">
+            </div>
+            <input type="hidden" id="loanAmount">
+            <input type="hidden" id="loanTerm">
+            <button type="submit" class="btn-primary full-width">Submit Application</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
